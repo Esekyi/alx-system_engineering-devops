@@ -1,4 +1,4 @@
-![alt text](https://imgur.com/a/UE8a3mt)
+https://imgur.com/a/UE8a3mt
 
 
 1. A server is a computer that runs or hosts a web infrastructure and provides services to other computers over a network.
