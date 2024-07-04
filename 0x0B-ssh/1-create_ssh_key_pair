@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# bash script that generates new RSA key pair protected by the paraphrase betty
+
+ssh-keygen -t rsa -b 4096 -f school -P "betty"
