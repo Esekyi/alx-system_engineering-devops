@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Configure your domain zone so that the subdomain www points to your load-balancer IP
+
+
+fetch_dns_record() {
+    local subdomain=$1
+    local domain=$2
+    local record_info=$(dig +short $subdomain.$domain)
+    echo "The subdomain $subdomain is a A record and points to $record_info"
+}
+
+
+if [[ $# -eq 1 ]]; then
+
+    fetch_dns_record "www" $1
+    fetch_dns_record "lb-01" $1
+    fetch_dns_record "web-01" $1
+    fetch_dns_record "web-02" $1
+elif [[ $# -eq 2 ]]; then
+
+    fetch_dns_record $2 $1
+else
+    echo "Usage: $0 <domain> [subdomain]"
+fi
