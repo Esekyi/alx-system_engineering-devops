@@ -4,7 +4,6 @@ apt-get update
 apt-get install -y nginx
 systemctl enable nginx
 systemctl start nginx
-sudo sed -i '/listen 80 default_server;/s/^#//g' /etc/nginx/sites-available/default
-sudo sed -i '/listen \[::\]:80 default_server;/s/^#//g' /etc/nginx/sites-available/default
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx restart
 netstat -tulnp | grep :80
