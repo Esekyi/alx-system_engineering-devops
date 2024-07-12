@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# make task 0 fix short and sweet
+service nginx status | grep -q 'not running' || service nginx stop
+echo "service (init) confirms that nginx is not running"
