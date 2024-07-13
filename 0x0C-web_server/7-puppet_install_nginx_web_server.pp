@@ -22,10 +22,3 @@ service { 'nginx':
     enable => true,
     require => Package['nginx']
 }
-
-
-exec { 'nginx-reload':
-  command     => '/usr/sbin/nginx -s reload',
-  refreshonly => true,
-  subscribe   => File['/etc/nginx/sites-available/default'],
-}
