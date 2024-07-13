@@ -15,8 +15,8 @@ frontend www_http\n\
 \
 backend web_backend\n\
     balance roundrobin\n\
-    server $hostname web-01.esekyi.tech:80 check\n\
-    server $hostname web-02.esekyi.tech:80 check\
+    server 319407-web-01 web-01.esekyi.tech:80 check\n\
+    server 319407-web-02 web-02.esekyi.tech:80 check\
 ' /etc/haproxy/haproxy.cfg || { echo "Failed to configure HAProxy"; exit 1; }
 
 sudo systemctl restart haproxy.service
