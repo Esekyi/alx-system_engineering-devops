@@ -1,9 +1,7 @@
 # puppet file to install nginx web server 301 moved permanently
 
-class nginx {
-    package { 'nginx':
-        ensure => installed
-    }
+package { 'nginx':
+    ensure => installed
 }
 
 file_line { 'aaaaa':
