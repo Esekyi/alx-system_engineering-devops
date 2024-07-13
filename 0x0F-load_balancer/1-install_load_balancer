@@ -11,12 +11,13 @@ sudo sed -i '1i\
 frontend www_http\n\
     bind *:80\n\
     mode http\n\
+	option http-keep-alive\n\
     default_backend web_backend\n\
 \
 backend web_backend\n\
     balance roundrobin\n\
     server 319407-web-01 web-01.esekyi.tech:80 check\n\
     server 319407-web-02 web-02.esekyi.tech:80 check\
-' /etc/haproxy/haproxy.cfg || { echo "Failed to configure HAProxy"; exit 1; }
+' /etc/haproxy/haproxy.cfg
 
 sudo systemctl restart haproxy.service
