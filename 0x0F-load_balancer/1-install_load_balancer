@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# bash script to Install and configure HAproxy on the lb-01 server.
+
+sudo apt-get update
+sudo apt-get install -y haproxy
+
+sudo systemctl enable haproxy.service
+sudo systemctl start haproxy.service
+
+sudo sed -i '1i\
+frontend www_http\n\
+    bind *:80\n\
+    mode http\n\
+    default_backend web_backend\n\
+\
+backend web_backend\n\
+    balance roundrobin\n\
+    server 319407-web-01 web-01.esekyi.tech:80 check\n\
+    server 319407-web-02 web-02.esekyi.tech:80 check\
+' /etc/haproxy/haproxy.cfg || { echo "Failed to configure HAProxy"; exit 1; }
+
+sudo systemctl restart haproxy.service

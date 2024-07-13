@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# bash script to configure load balancer
+
+sudo apt-get update
+sudo apt-get -y install nginx
+
+sudo echo 'Hello World!' > /var/www/html/index.html
+
+sudo sed -i '/server_name _;/a \\tadd_header X-Served-By $hostname;' /etc/nginx/sites-available/default
+
+sudo service nginx restart
