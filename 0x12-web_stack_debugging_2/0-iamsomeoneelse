@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 # Running commands as a different user, accepts 1 argument
 
-user = $1
-sudo - user
-whoami
+sudo -u "$1" whoami
