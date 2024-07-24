@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Creaating a backup file from all db in mysql and compress it
+
+MYSQL_ROOT_PASSWORD=$1
+DATE=$(date +%d-%m-%Y)
+ARCHIVE_FILE="${DATE}.tar.gz"
+sudo mysqldump -u root -p${MYSQL_ROOT_PASSWORD} --all-databases > backup.sql
+tar -czvf ${ARCHIVE_FILE} backup.sql
