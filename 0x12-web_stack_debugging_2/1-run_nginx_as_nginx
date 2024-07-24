@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # this script configures a server to only run
 # nginx server as nginx user. listen on 8080
+pkill apache2
 service nginx stop
 sed -i 's/80/8080/g' /etc/nginx/sites-available/default
-sed -i 's/user www-data;/user nginx;/g' /etc/nginx/nginx.conf
-service nginx restart
+chmod 644 /etc/nginx/nginx.conf
+sudo -u nginx service nginx restart
