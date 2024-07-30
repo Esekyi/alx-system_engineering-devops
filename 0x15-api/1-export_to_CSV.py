@@ -17,7 +17,7 @@ if __name__ == "__main__":
     user_todos_response = requests.get(todo_url)
     todos = user_todos_response.json()
 
-    with open("{}.csv".formart(employee_ID), "w") as file:
+    with open("{}.csv".format(employee_ID), "w") as file:
         for task in todos:
             file.write('"{}","{}","{}","{}"\n'
                        .format(employee_ID, username, task.get("completed"),
