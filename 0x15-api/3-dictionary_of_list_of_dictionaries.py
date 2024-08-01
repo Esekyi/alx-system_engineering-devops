@@ -12,27 +12,26 @@ if __name__ == "__main__":
 
     response = requests.get(base_url)
     data = response.json()
+    all_employees_task = {}
     for user in data:
-        username= user["username"]
+        username = user["username"]
         employee_ID = user["id"]
 
         # print(employee_ID)
         todo_url = base_url + "/{}".format(employee_ID) + "/todos"
         user_todos_response = requests.get(todo_url)
         todos = user_todos_response.json()
-        json_format = {employee_ID: []}
+        all_employees_task[employee_ID] = []
+
         for task in todos:
-            json_format[employee_ID].append({
+            all_employees_task[employee_ID].append({
                 "username": username,
                 "task": task.get('title'),
                 "completed": task.get("completed")
-			})
-        # print(json_format)
-        with open("todo_all_employees.json", "a") as filename:
-            json.dump(json_format, filename)
-
-
-
+            })
+# print(json_format)
+        with open("todo_all_employees.json", "w") as filename:
+            json.dump(all_employees_task, filename)
     # for task in todos:
     #     json_format[employee_ID].append({
     #            "task": task.get("title"),
