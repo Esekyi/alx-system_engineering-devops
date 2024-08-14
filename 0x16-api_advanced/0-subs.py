@@ -1,12 +1,14 @@
 #!/usr/bin/python3
+"""accessing all subscribers from reddit api"""
 import requests
 from sys import argv
-"""accessing all subscribers from reddit api"""
 
 
 def number_of_subscribers(subreddit):
-    """Main function
-    make a aget request to redit api to get subscribers"""
+    """
+    Main function
+    make a aget request to redit api to get subscribers
+    """
 
     # subreddit = argv[1]
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
@@ -18,7 +20,3 @@ def number_of_subscribers(subreddit):
         return subscribers
     else:
         return 0
-
-
-if __name__ == "__main__":
-    number_of_subscribers(argv[1])
