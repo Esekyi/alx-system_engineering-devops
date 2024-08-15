@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """accessing all subscribers from reddit api"""
 import requests
-from sys import argv
 
 
 def number_of_subscribers(subreddit):
@@ -14,9 +13,7 @@ def number_of_subscribers(subreddit):
     headers = {'User-Agent': 'Mozilla/5.0'}
     response = requests.get(url, allow_redirects=False, headers=headers)
 
-    if response.status_code == 200:
-        data = response.json()
-        subscribers = data.get('data', {}).get('subscribers', 0)
-        return subscribers
-    else:
+    try:
+        return response.json()['data']['subscribers']
+    except:
         return 0
