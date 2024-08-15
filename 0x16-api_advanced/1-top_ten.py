@@ -9,7 +9,7 @@ def top_ten(subreddit):
     make a aget request to redit api to get subscribers
     """
 
-    url = "https://www.reddit.com/r/{}/hot/.json?limit=10".format(subreddit)
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     headers = {'User-Agent': 'Mozilla/5.0'}
     try:
         response = requests.get(url, allow_redirects=False, headers=headers)
@@ -19,5 +19,5 @@ def top_ten(subreddit):
                 print(post['data']['title'])
         else:
             print(None)
-    except:
+    except requests.RequestException as e:
         print(None)
