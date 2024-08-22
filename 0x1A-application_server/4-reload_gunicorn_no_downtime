@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# gracefully kill gunicorn process  without downtime
+
+pkill -HUP gunicorn
