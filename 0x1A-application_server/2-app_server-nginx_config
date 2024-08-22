@@ -7,6 +7,7 @@ server {
 
     server_name _;
         location /hbnb_static { alias /data/web_static/current/; }
+
     location /airbnb-onepage/ {
         alias ~/AirBnB_clone_v2/;
         proxy_pass http://0.0.0.0:5000;
