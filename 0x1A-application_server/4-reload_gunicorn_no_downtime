@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 # gracefully kill gunicorn process  without downtime
 
-pkill -HUP gunicorn
+PID=$(ps aux | grep 'gunicorn' | grep -v grep | awk '{print $2}')
+
+if [ -n "$PID" ]; then
+    kill -HUP $PID
+else
+    echo ""
+fi
